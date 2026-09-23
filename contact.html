@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Contact | ChemDist Pro B2B Sales &amp; Distribution Center</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="description" content="Contact ChemDist Pro technical sales representatives, request bulk chemical quotes, or locate regional warehouse distribution centers.">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    html,
+    body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" class="logo-mark" alt="ChemDist Pro Logo">
+        <span class="logo-text">ChemDist <span class="logo-accent">Pro</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link">Home2</a>
+        <a href="services.html" class="nav-link">Catalog</a>
+        <a href="doctors.html" class="nav-link">Ordering</a>
+        <a href="blog.html" class="nav-link">SDS</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle theme-toggle-desktop" aria-label="Toggle Dark Mode">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button class="icon-btn rtl-toggle rtl-toggle-desktop" aria-label="Toggle RTL" title="Toggle RTL">
+          <i class="ph ph-arrows-left-right"></i>
+        </button>
+        <a href="login.html" class="btn btn-primary btn-sm nav-desktop">Login</a>
+        <button class="icon-btn hamburger" aria-label="Open Menu">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-drawer-overlay"></div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" class="logo-mark" alt="ChemDist Pro Logo">
+        <span class="logo-text">ChemDist <span class="logo-accent">Pro</span></span>
+      </a>
+      <button class="icon-btn drawer-close" aria-label="Close Menu">
+        <i class="ph ph-x"></i>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" class="drawer-nav-link">Home</a>
+      <a href="home2.html" class="drawer-nav-link">Home2</a>
+      <a href="services.html" class="drawer-nav-link">Catalog</a>
+      <a href="doctors.html" class="drawer-nav-link">Ordering</a>
+      <a href="blog.html" class="drawer-nav-link">SDS</a>
+      <a href="contact.html" class="drawer-nav-link active">Contact</a>
+      <a href="dashboard.html" class="drawer-nav-link">Dashboard</a>
+    </nav>
+    <div class="drawer-actions">
+      <div class="drawer-toggles">
+        <button class="icon-btn theme-toggle" aria-label="Toggle Dark Mode"><i class="ph ph-moon"></i></button>
+        <button class="icon-btn rtl-toggle" aria-label="Toggle RTL"><i class="ph ph-arrows-left-right"></i></button>
+      </div>
+      <a href="login.html" class="btn btn-primary btn-block">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="hero" style="padding-bottom: var(--spacing-8);">
+      <div class="mesh mesh-1"></div>
+      <div class="mesh mesh-2"></div>
+      <div class="grid-overlay"></div>
+
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 0;">
+          <span class="eyebrow centered">B2B Sales Support</span>
+          <h1>Get in <span class="serif grad-text">touch</span></h1>
+          <p class="lead">Connect with our chemical technical specialists or request a warehouse distribution quote.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top: var(--spacing-6);">
+      <div class="container">
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-6);">
+
+          <!-- Contact Form (Left) -->
+          <div class="card" style="align-items: stretch; text-align: left;" data-reveal="left">
+            <h3 style="margin-bottom: var(--spacing-4);">Send a B2B Inquiry</h3>
+
+            <form class="validate-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully! Our technical sales team will respond within 2 hours.');">
+              <div class="form-group">
+                <label class="form-label">Full Name &amp; Title</label>
+                <input type="text" class="form-control" name="name" required placeholder="John Smith, Procurement Lead">
+                <span class="error-message">Name is required</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Corporate Email</label>
+                <input type="email" class="form-control" name="email" required placeholder="jsmith@company.com">
+                <span class="error-message">Valid email is required</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" name="phone" placeholder="(800) 555-0199">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Inquiry Subject</label>
+                <select class="form-control" name="subject">
+                  <option value="" disabled selected>Select a topic...</option>
+                  <option value="bulk_quote">Bulk Order / Volume Pricing</option>
+                  <option value="recurring">Automated Recurring Delivery</option>
+                  <option value="credit">Net-30 Enterprise Credit Setup</option>
+                  <option value="sds">SDS &amp; OSHA Compliance Assistance</option>
+                  <option value="custom">Custom Chemical Formulation</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Message Details</label>
+                <textarea class="form-control" name="message" required placeholder="Describe chemical volumes, container types (drums/totes), or specific cleaning application..." rows="4" style="resize: vertical;"></textarea>
+                <span class="error-message">Message is required</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Inquiry</button>
+            </form>
+          </div>
+
+          <!-- Contact Info (Right) -->
+          <div style="display: flex; flex-direction: column; gap: var(--spacing-4);" data-reveal="right">
+            <div class="card" style="align-items: flex-start; text-align: left; padding: var(--spacing-4);">
+              <div style="display: flex; align-items: center; gap: var(--spacing-3); margin-bottom: var(--spacing-2);">
+                <div style="width: 48px; height: 48px; background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                  <i class="ph ph-map-pin"></i>
+                </div>
+                <h3 style="margin: 0; font-size: 1.25rem;">Distribution Hub</h3>
+              </div>
+              <p style="margin: 0;">850 Industrial Parkway, Building B<br>Supply Hub, OH 44101</p>
+            </div>
+
+            <div class="card" style="align-items: flex-start; text-align: left; padding: var(--spacing-4);">
+              <div style="display: flex; align-items: center; gap: var(--spacing-3); margin-bottom: var(--spacing-2);">
+                <div style="width: 48px; height: 48px; background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                  <i class="ph ph-phone"></i>
+                </div>
+                <h3 style="margin: 0; font-size: 1.25rem;">Sales Desk</h3>
+              </div>
+              <p style="margin: 0;">(800) 555-0199<br><span style="font-size: 0.875rem; color: var(--color-text-muted);">Mon-Fri: 7:00am - 6:00pm EST</span></p>
+            </div>
+
+            <div class="card" style="align-items: flex-start; text-align: left; padding: var(--spacing-4);">
+              <div style="display: flex; align-items: center; gap: var(--spacing-3); margin-bottom: var(--spacing-2);">
+                <div style="width: 48px; height: 48px; background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                  <i class="ph ph-envelope"></i>
+                </div>
+                <h3 style="margin: 0; font-size: 1.25rem;">Orders &amp; SDS Support</h3>
+              </div>
+              <p style="margin: 0;">orders@chemdistpro.com<br><span style="font-size: 0.875rem; color: var(--color-text-muted);">Quotes issued within 2 hours</span></p>
+            </div>
+
+            <div class="card" style="align-items: flex-start; text-align: left; padding: var(--spacing-4);">
+              <div style="display: flex; align-items: center; gap: var(--spacing-3); margin-bottom: var(--spacing-2);">
+                <div style="width: 48px; height: 48px; background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                  <i class="ph ph-share-network"></i>
+                </div>
+                <h3 style="margin: 0; font-size: 1.25rem;">Follow Us</h3>
+              </div>
+              <p style="margin: 0 0 var(--spacing-3) 0; font-size: 0.875rem; color: var(--color-text-muted);">Connect with ChemDist Pro on social media</p>
+              <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#" aria-label="X"><i class="ph-fill ph-x-logo"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Interactive Map -->
+        <div class="media-frame" data-reveal style="margin-top: var(--spacing-8); height: 420px; width: 100%; border-radius: var(--radius-xl); overflow: hidden; position: relative;">
+          <iframe 
+            title="ChemDist Pro Distribution Hub Map"
+            src="https://maps.google.com/maps?q=850%20Industrial%20Parkway%2C%20Cleveland%2C%20OH&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="100%" 
+            style="border: 0; width: 100%; height: 100%;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-deep">
+      <div class="mesh mesh-1" style="opacity: .16;"></div>
+      <div class="container container-narrow" style="text-align: center; position: relative; z-index: 2;" data-reveal>
+        <span class="eyebrow centered" style="margin-bottom: var(--spacing-3);">Enterprise Accounts</span>
+        <h2 style="margin-bottom: var(--spacing-3);">Ready to optimize your <span class="serif">supply chain?</span></h2>
+        <p class="lead" style="color: rgba(255,255,255,.72); margin-bottom: var(--spacing-5);">
+          Set up a corporate account today for custom volume pricing tiers, Net-30 credit terms, and dedicated freight schedules.
+        </p>
+        <div class="cta-actions">
+          <a href="doctors.html" class="btn btn-light btn-lg">Request Volume Quote <i class="ph ph-arrow-right"></i></a>
+          <a href="tel:8005550199" class="btn btn-on-deep btn-lg"><i class="ph ph-phone"></i> (800) 555-0199</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: var(--spacing-3);">
+            <img src="assets/images/logo.png" class="logo-mark" alt="ChemDist Pro Logo">
+            <span class="logo-text">ChemDist <span class="logo-accent">Pro</span></span>
+          </a>
+          <p>Premier B2B distributor of industrial cleaning chemicals, heavy solvents, sanitizers, and facility supplies.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="#" aria-label="X"><i class="ph-fill ph-x-logo"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Catalog</h4>
+          <div class="footer-links">
+            <a href="services.html#degreasers">Solvents &amp; Degreasers</a>
+            <a href="services.html#sanitizers">EPA Disinfectants</a>
+            <a href="services.html#floorcare">Floor Care &amp; Coatings</a>
+            <a href="doctors.html">Bulk Ordering</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <div class="footer-links">
+            <a href="doctors.html">Ordering &amp; Logistics</a>
+            <a href="blog.html">SDS Library</a>
+            <a href="contact.html">Contact Sales</a>
+            <a href="dashboard.html">Client Dashboard</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-links">
+            <a href="contact.html"><i class="ph ph-map-pin"></i> 850 Industrial Parkway, Building B<br>Supply Hub, OH 44101</a>
+            <a href="tel:8005550199"><i class="ph ph-phone"></i> (800) 555-0199</a>
+            <a href="mailto:orders@chemdistpro.com"><i class="ph ph-envelope"></i> orders@chemdistpro.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 ChemDist Pro Supplies Inc. All rights reserved.</p>
+        <nav>
+          <a href="#">Privacy</a>
+          <a href="#">Terms of Sale</a>
+          <a href="#">OSHA Compliance</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" type="button" aria-label="Back to top"><i class="ph ph-arrow-up" aria-hidden="true"></i></button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

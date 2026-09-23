@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChemDist Pro | B2B Chemical Supply Overview &amp; Estimator</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="description"
+    content="ChemDist Pro B2B Overview: Interactive industrial chemical supply calculator, chemical categories, compliance standards, and logistics fleet capabilities.">
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo-mark.png" class="logo-mark" alt="ChemDist Pro Logo">
+        <span class="logo-text">ChemDist <span class="logo-accent">Pro</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link active">Home2</a>
+        <a href="services.html" class="nav-link">Catalog</a>
+        <a href="doctors.html" class="nav-link">Ordering</a>
+        <a href="blog.html" class="nav-link">SDS</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle theme-toggle-desktop" aria-label="Toggle Dark Mode">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button class="icon-btn rtl-toggle rtl-toggle-desktop" aria-label="Toggle RTL" title="Toggle RTL">
+          <i class="ph ph-arrows-left-right"></i>
+        </button>
+        <a href="login.html" class="btn btn-primary btn-sm nav-desktop">Login</a>
+        <button class="icon-btn hamburger" aria-label="Open Menu">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-drawer-overlay"></div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo-mark.png" class="logo-mark" alt="ChemDist Pro Logo">
+        <span class="logo-text">ChemDist <span class="logo-accent">Pro</span></span>
+      </a>
+      <button class="icon-btn drawer-close" aria-label="Close Menu">
+        <i class="ph ph-x"></i>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" class="drawer-nav-link">Home</a>
+      <a href="home2.html" class="drawer-nav-link active">Home2</a>
+      <a href="services.html" class="drawer-nav-link">Catalog</a>
+      <a href="doctors.html" class="drawer-nav-link">Ordering</a>
+      <a href="blog.html" class="drawer-nav-link">SDS</a>
+      <a href="contact.html" class="drawer-nav-link">Contact</a>
+      <a href="dashboard.html" class="drawer-nav-link">Dashboard</a>
+    </nav>
+    <div class="drawer-actions">
+      <div class="drawer-toggles">
+        <button class="icon-btn theme-toggle" aria-label="Toggle Dark Mode"><i class="ph ph-moon"></i></button>
+        <button class="icon-btn rtl-toggle" aria-label="Toggle RTL"><i class="ph ph-arrows-left-right"></i></button>
+      </div>
+      <a href="login.html" class="btn btn-primary btn-block">Login</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==================== HERO (SPLIT) ==================== -->
+    <section class="hero">
+      <div class="mesh mesh-1"></div>
+      <div class="mesh mesh-2"></div>
+
+      <div class="container split tight">
+        <div class="hero-copy">
+          <span class="eyebrow animate-slide-up stagger-1" style="margin-bottom: var(--spacing-3);">B2B Industrial Logistics</span>
+
+          <h1 class="animate-slide-up stagger-2"
+            style="margin-bottom: var(--spacing-3); font-size: clamp(2.5rem, 4.6vw, 3.9rem);">
+            Precision chemical <span class="serif grad-text">distribution</span> &amp; supply
+          </h1>
+
+          <p class="lead animate-slide-up stagger-3" style="margin-bottom: var(--spacing-5); max-width: 52ch;">
+            Tailored industrial cleaning solutions, volume pricing, and automated delivery schedules engineered for commercial facility compliance.
+          </p>
+
+          <div class="animate-slide-up stagger-4"
+            style="display: flex; gap: var(--spacing-2); align-items: center; flex-wrap: wrap;">
+            <a href="#explorer" class="btn btn-primary btn-lg">Estimate Supply Needs <i class="ph ph-arrow-right"></i></a>
+            <a href="doctors.html" class="btn btn-outline btn-lg">Request Bulk Quote</a>
+          </div>
+
+          <div class="animate-fade-in stagger-5"
+            style="display: flex; align-items: center; gap: 12px; margin-top: var(--spacing-5); flex-wrap: wrap;">
+            <div class="stars" style="margin: 0;">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <span class="small muted"><strong style="color: var(--color-text-main);">4.9/5</strong> from 1,500+ commercial clients</span>
+          </div>
+        </div>
+
+        <div class="animate-fade-in stagger-3" style="position: relative;">
+          <div class="media-frame" style="aspect-ratio: 1 / 1;">
+            <img src="https://purimix.com/wp-content/uploads/2021/03/imageedit_4_4627506333.jpg"
+              alt="Industrial Chemical Storage Facility" loading="eager">
+          </div>
+
+          <div class="float-chip" style="bottom: -20px; left: -20px;">
+            <div class="fc-icon"><i class="ph ph-shield-check"></i></div>
+            <div style="text-align: left;">
+              <strong>OSHA &amp; EPA Certified</strong>
+              <span>100% GHS SDS Compliant</span>
+            </div>
+          </div>
+
+          <div class="float-chip hide-mobile" style="top: -20px; right: -20px;">
+            <div class="fc-icon"><i class="ph ph-drop"></i></div>
+            <div style="text-align: left;">
+              <strong>500+ SKUs</strong>
+              <span>Drums, Totes &amp; Cases</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== INTERACTIVE: SUPPLY CALCULATOR ==================== -->
+    <section class="bg-alt" id="explorer">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="eyebrow centered">Interactive · 60 seconds</span>
+          <h2>Calculate your <span class="serif">chemical supply profile</span></h2>
+          <p>Select your facility type, operational frequency, and volume requirements to preview your customized chemical package.</p>
+        </div>
+
+        <div class="explorer" data-reveal="scale" id="allergyExplorer">
+          <!-- LEFT: questions -->
+          <div class="explorer-main">
+            <div class="explorer-progress">
+              <span class="progress-label" data-ex-step-label>Step 1 of 3</span>
+              <div class="progress-track">
+                <div class="progress-fill" data-ex-progress></div>
+              </div>
+            </div>
+
+            <!-- Step 1 — facility needs -->
+            <div class="explorer-step active" data-ex-step="1">
+              <h3>Which cleaning tasks do you perform most?</h3>
+              <p class="hint">Select all that apply.</p>
+              <div class="option-grid">
+                <button type="button" class="option" data-ex-opt="symptom" data-value="nasal"><i class="ph ph-drop"></i>
+                  Heavy oil &amp; grease degreasing</button>
+                <button type="button" class="option" data-ex-opt="symptom" data-value="eyes"><i class="ph ph-shield-check"></i>
+                  Facility surface disinfection</button>
+                <button type="button" class="option" data-ex-opt="symptom" data-value="skin"><i class="ph ph-gear"></i>
+                  Parts washing &amp; solvents</button>
+                <button type="button" class="option" data-ex-opt="symptom" data-value="breathing"><i class="ph ph-broom"></i>
+                  High-traffic floor stripping</button>
+                <button type="button" class="option" data-ex-opt="symptom" data-value="gut"><i class="ph ph-hard-hat"></i>
+                  OSHA HazCom PPE &amp; Safety</button>
+                <button type="button" class="option" data-ex-opt="symptom" data-value="sinus"><i class="ph ph-wrench"></i>
+                  Custom dilution proportioning</button>
+              </div>
+            </div>
+
+            <!-- Step 2 — operational frequency -->
+            <div class="explorer-step" data-ex-step="2">
+              <h3>What is your cleaning schedule and facility scale?</h3>
+              <p class="hint">Pick the frequency that fits best, then the primary setting.</p>
+
+              <div class="option-grid" style="margin-bottom: var(--spacing-3);">
+                <button type="button" class="option" data-ex-opt="timing" data-single data-value="spring"><i class="ph ph-clock"></i> Daily shift cleaning</button>
+                <button type="button" class="option" data-ex-opt="timing" data-single data-value="autumn"><i class="ph ph-calendar-blank"></i> Weekly deep cleaning</button>
+                <button type="button" class="option" data-ex-opt="timing" data-single data-value="yearround"><i class="ph ph-calendar-dots"></i> Monthly bulk replenishment</button>
+                <button type="button" class="option" data-ex-opt="timing" data-single data-value="meals"><i class="ph ph-truck"></i> On-demand tanker shipments</button>
+              </div>
+
+              <div class="option-grid">
+                <button type="button" class="option" data-ex-opt="place" data-value="indoors"><i class="ph ph-buildings"></i> Industrial manufacturing</button>
+                <button type="button" class="option" data-ex-opt="place" data-value="outdoors"><i class="ph ph-first-aid"></i> Healthcare &amp; hospital</button>
+                <button type="button" class="option" data-ex-opt="place" data-value="pets"><i class="ph ph-cooking-pot"></i> Food &amp; beverage processing</button>
+                <button type="button" class="option" data-ex-opt="place" data-value="damp"><i class="ph ph-warehouse"></i> Warehouse &amp; logistics hub</button>
+              </div>
+            </div>
+
+            <!-- Step 3 — volume slider -->
+            <div class="explorer-step" data-ex-step="3">
+              <h3>What chemical volume size do you need?</h3>
+              <p class="hint">Drag to set estimated monthly chemical gallon requirements.</p>
+
+              <div class="range-wrap">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--spacing-2);">
+                  <span class="small muted">Small (5-10 Gal)</span>
+                  <strong style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 400;" data-ex-sev-label>Industrial (100-250 Gal)</strong>
+                  <span class="small muted">Bulk Tanker (1000+ Gal)</span>
+                </div>
+                <input type="range" min="1" max="5" step="1" value="3" data-ex-severity aria-label="Chemical supply volume">
+              </div>
+
+              <div style="margin-top: var(--spacing-4);">
+                <p class="hint" style="margin-bottom: var(--spacing-2);">Do you require automated recurring delivery?</p>
+                <div class="option-grid">
+                  <button type="button" class="option" data-ex-opt="otc" data-single data-value="yes-nohelp"><i class="ph ph-repeat"></i> Yes — Bi-Weekly Recurring</button>
+                  <button type="button" class="option" data-ex-opt="otc" data-single data-value="yes-some"><i class="ph ph-calendar"></i> Yes — Monthly Recurring</button>
+                  <button type="button" class="option" data-ex-opt="otc" data-single data-value="no"><i class="ph ph-shopping-bag"></i> One-time bulk shipment</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="explorer-nav">
+              <button type="button" class="btn btn-ghost" data-ex-prev disabled><i class="ph ph-arrow-left"></i> Back</button>
+              <div style="display: flex; gap: 10px; align-items: center;">
+                <button type="button" class="btn btn-ghost small" data-ex-reset>Reset</button>
+                <button type="button" class="btn btn-primary" data-ex-next>Next <i class="ph ph-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: live results -->
+          <div class="explorer-side">
+            <!-- Idle state -->
+            <div class="explorer-idle" data-ex-idle>
+              <div class="ring"><i class="ph ph-magnifying-glass"></i></div>
+              <h3 style="color: #fff;">Supply Profile Preview</h3>
+              <p style="color: rgba(255,255,255,.7); font-size: .9375rem;">
+                Select your facility parameters to view recommended chemical categories and volume breakdowns in real-time.
+              </p>
+            </div>
+
+            <!-- Live state -->
+            <div data-ex-live hidden style="flex-direction: column; height: 100%;">
+              <span class="eyebrow" style="color: var(--brand-300);">Live profile</span>
+              <h3 style="color: #fff; margin-top: var(--spacing-2);">Recommended Categories</h3>
+
+              <div class="readout" data-ex-bars>
+                <div class="readout-row">
+                  <div class="readout-head"><strong>Industrial Degreasers</strong><span data-ex-val="degreaser">0%</span></div>
+                  <div class="bar"><div class="bar-fill" data-ex-bar="degreaser"></div></div>
+                </div>
+                <div class="readout-row">
+                  <div class="readout-head"><strong>EPA Disinfectants</strong><span data-ex-val="sanitizer">0%</span></div>
+                  <div class="bar"><div class="bar-fill" data-ex-bar="sanitizer"></div></div>
+                </div>
+                <div class="readout-row">
+                  <div class="readout-head"><strong>Technical Solvents</strong><span data-ex-val="solvent">0%</span></div>
+                  <div class="bar"><div class="bar-fill" data-ex-bar="solvent"></div></div>
+                </div>
+                <div class="readout-row">
+                  <div class="readout-head"><strong>Floor Care &amp; Sealants</strong><span data-ex-val="floorcare">0%</span></div>
+                  <div class="bar"><div class="bar-fill" data-ex-bar="floorcare"></div></div>
+                </div>
+                <div class="readout-row">
+                  <div class="readout-head"><strong>HazCom Safety Gear</strong><span data-ex-val="safety">0%</span></div>
+                  <div class="bar"><div class="bar-fill" data-ex-bar="safety"></div></div>
+                </div>
+              </div>
+
+              <div class="result-card">
+                <span class="tag" style="background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.2); color: #fff; margin-bottom: 10px;" data-ex-badge>Analyzing Requirements</span>
+                <h4 data-ex-title>Select Options</h4>
+                <p data-ex-copy>Select facility type and cleaning frequency to generate your customized chemical supply profile.</p>
+                <a href="doctors.html" class="btn btn-light btn-sm btn-block" data-ex-cta>Request B2B Quote <i class="ph ph-arrow-right"></i></a>
+              </div>
+
+              <p class="small" style="color: rgba(255,255,255,.45); margin-top: var(--spacing-2); line-height: 1.5;">
+                Estimates are generated based on average commercial chemical usage rates. Contact sales for technical spec sheets.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CATALOG HIGHLIGHTS ==================== -->
+    <section>
+      <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--spacing-6); flex-wrap: wrap; gap: var(--spacing-3);" data-reveal>
+          <div style="max-width: 620px;">
+            <span class="eyebrow" style="margin-bottom: var(--spacing-2);">Chemical Catalog</span>
+            <h2 style="margin-bottom: var(--spacing-2);">Industrial grade <span class="serif">solutions</span></h2>
+            <p class="muted">Engineered formulas packaged for manufacturing plants, commercial janitorial crews, and specialized operations.</p>
+          </div>
+          <a href="services.html" class="btn btn-outline">View Full Catalog <i class="ph ph-arrow-right"></i></a>
+        </div>
+
+        <div class="card-grid">
+          <div class="card" style="align-items: center; text-align: center;" data-reveal>
+            <div class="card-media">
+              <img src="https://www.powerclean.in/images_webp/Power_Clean_XL_Man_Using_In_Ultrasonic.webp" alt="Heavy Solvents & Degreasers" loading="lazy">
+            </div>
+            <h3>Heavy Solvents &amp; Degreasers</h3>
+            <p>Fast-acting solvent cleaners engineered to break down tough grease, sludge, and industrial oils.</p>
+            <a href="services.html#degreasers" class="link-arrow">Read Spec Sheet <i class="ph ph-caret-right"></i></a>
+          </div>
+
+          <div class="card" style="align-items: center; text-align: center; background: var(--grad-deep); border-color: transparent; --reveal-delay: 100ms;" data-reveal>
+            <div class="card-media">
+              <img src="https://img.profoodworld.com/files/base/pmmi/all/image/2018/12/pfw_31096_pssifoam.png?auto=format%2Ccompress&fit=max&q=70&w=1200" alt="Disinfectants and Sanitizers" loading="lazy">
+            </div>
+            <h3 style="color: #fff;">EPA Disinfectants &amp; Sanitizers</h3>
+            <p style="color: rgba(255,255,255,.75);">Hospital-grade virucidal surface disinfectants for medical facilities, schools, and food processing lines.</p>
+            <a href="services.html#sanitizers" class="link-arrow" style="color: #fff;">Read Spec Sheet <i class="ph ph-caret-right"></i></a>
+          </div>
+
+          <div class="card" style="align-items: center; text-align: center; --reveal-delay: 200ms;" data-reveal>
+            <div class="card-media">
+              <img src="https://5.imimg.com/data5/SELLER/Default/2025/12/567511742/PU/DS/UA/27821751/hard-floor-machine-scrubbing-training-1200x900-500x500.jpg" alt="Floor Care & Maintenance" loading="lazy">
+            </div>
+            <h3>Floor Care &amp; Concrete Sealants</h3>
+            <p>Heavy-duty floor strippers, acrylic finishes, and high-shine scrub detergents for warehouse concrete.</p>
+            <a href="services.html#floorcare" class="link-arrow">Read Spec Sheet <i class="ph ph-caret-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section class="bg-alt">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="eyebrow centered">B2B Client Reviews</span>
+          <h2>Efficiency without <span class="serif">compromise</span></h2>
+          <p>Hear from plant managers and facility directors who rely on ChemDist Pro for daily chemical supply logistics.</p>
+        </div>
+
+        <div class="card-grid quote-grid">
+          <div class="quote-card" data-reveal>
+            <div class="stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <blockquote>
+              "ChemDist Pro reduced our chemical procurement overhead by 25%. The 55-gallon solvent drum deliveries always arrive right on schedule."
+            </blockquote>
+            <div class="person">
+              <div class="avatar">
+                <img src="https://media.istockphoto.com/id/1587604256/photo/portrait-lawyer-and-black-woman-with-tablet-smile-and-happy-in-office-workplace-african.jpg?s=612x612&w=0&k=20&c=n9yulMNKdIYIQC-Qns8agFj6GBDbiKyPRruaUTh4MKs=" alt="Sarah Jenkins" loading="lazy">
+              </div>
+              <div>
+                <strong>Blessy Jhon</strong>
+                <span>Facility Director · AeroParts Mfg</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="quote-card" style="--reveal-delay: 100ms;" data-reveal>
+            <div class="stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <blockquote>
+              "The GHS SDS integration in their portal is incredible. Whenever an OSHA inspection occurs, our safety team pulls up all chemical specs in seconds."
+            </blockquote>
+            <div class="person">
+              <div class="avatar">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/049/174/246/small/a-smiling-young-indian-man-with-formal-shirts-outdoors-photo.jpg" alt="Marcus Vance" loading="lazy">
+              </div>
+              <div>
+                <strong>Prathi Vance</strong>
+                <span>Safety Compliance Manager</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="quote-card" style="--reveal-delay: 200ms;" data-reveal>
+            <div class="stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <blockquote>
+              "Automated recurring supply orders saved our janitorial operation from running out of sanitizers during peak seasonal demand."
+            </blockquote>
+            <div class="person">
+              <div class="avatar">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/078/691/820/small/professional-woman-with-curly-hair-holding-laptop-outdoors-free-photo.jpg" alt="Elena Rostova" loading="lazy">
+              </div>
+              <div>
+                <strong>Gaytiri Rostova</strong>
+                <span>Operations Director</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== LOGISTICS TEAM ==================== -->
+    <section>
+      <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--spacing-6); flex-wrap: wrap; gap: var(--spacing-3);" data-reveal>
+          <div style="max-width: 620px;">
+            <span class="eyebrow" style="margin-bottom: var(--spacing-2);">Expert Account Team</span>
+            <h2 style="margin-bottom: var(--spacing-2);">Meet your <span class="serif">specialists</span></h2>
+            <p class="muted">Dedicated chemical specialists and HazMat logistics managers ready to support your facility operations.</p>
+          </div>
+          <a href="doctors.html" class="btn btn-outline">All Specialists <i class="ph ph-arrow-right"></i></a>
+        </div>
+
+        <div class="card-grid">
+          <!-- Specialist 1 -->
+          <div class="card" style="padding: 0; overflow: hidden; align-items: stretch; text-align: left;" data-reveal>
+            <div class="card-media doc-photo">
+              <img src="https://media.istockphoto.com/id/1949501832/photo/handsome-hispanic-senior-business-man-with-crossed-arms-smiling-at-camera-indian-or-latin.jpg?s=612x612&w=0&k=20&c=LtlsYrQxUyX7oRmYS37PnZeaV2JmoPX9hWYPOfojCgw=" alt="Robert Vance" loading="lazy">
+            </div>
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin-bottom: 4px;">Robert Vance</h3>
+              <span style="color: var(--color-primary); font-weight: 500; font-size: 0.875rem; margin-bottom: var(--spacing-2); display: block;">VP Technical Sales ·  Solvents</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--spacing-3);">
+                <span class="tag">Heavy Solvents</span>
+                <span class="tag">Degreasing</span>
+              </div>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-3);">"Helping industrial manufacturing plants optimize cleaning solvent efficiency and safety compliance."</p>
+              <div style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">18+ Yrs Exp.</span>
+                <a href="doctors.html" style="color: var(--color-primary); font-weight: 500;" class="link-arrow">View Profile <i class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Specialist 2 -->
+          <div class="card" style="padding: 0; overflow: hidden; align-items: stretch; text-align: left; --reveal-delay: 100ms;" data-reveal>
+            <div class="card-media doc-photo">
+              <img src="https://t3.ftcdn.net/jpg/02/79/78/48/360_F_279784836_4eKMjfIfDtaICKmaSBAyft2Y43u5V76Q.jpg" alt="Michael Chen" loading="lazy">
+            </div>
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin-bottom: 4px;">Michael Chen</h3>
+              <span style="color: var(--color-primary); font-weight: 500; font-size: 0.875rem; margin-bottom: var(--spacing-2); display: block;">Director of HazMat Fleet Logistics</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--spacing-3);">
+                <span class="tag">Fleet Logistics</span>
+                <span class="tag">Bulk Drum Freight</span>
+              </div>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-3);">"Ensuring 99.4% on-time delivery across regional warehouse hubs with complete HazMat certification."</p>
+              <div style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">14+ Yrs Exp.</span>
+                <a href="doctors.html" style="color: var(--color-primary); font-weight: 500;" class="link-arrow">View Profile <i class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Specialist 3 -->
+          <div class="card" style="padding: 0; overflow: hidden; align-items: stretch; text-align: left; --reveal-delay: 200ms;" data-reveal>
+            <div class="card-media doc-photo">
+              <img src="https://img.magnific.com/free-photo/confident-african-businesswoman-smiling-closeup-portrait-jobs-career-campaign_53876-143280.jpg" alt="Dr. Elena Rodriguez" loading="lazy">
+            </div>
+            <div style="padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column;">
+              <h3 style="margin-bottom: 4px;">Dr. Elena Rodriguez</h3>
+              <span style="color: var(--color-primary); font-weight: 500; font-size: 0.875rem; margin-bottom: var(--spacing-2); display: block;">Lead Formulation Chemist</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--spacing-3);">
+                <span class="tag">EPA Disinfectants</span>
+                <span class="tag">Custom Blends</span>
+              </div>
+              <p style="font-size: 0.875rem; margin-bottom: var(--spacing-3);">"Formulating eco-friendly, low-VOC disinfectants and heavy cleaners that meet strict EPA guidelines."</p>
+              <div style="margin-top: auto; padding-top: var(--spacing-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
+                <span style="color: var(--color-text-muted);">10+ Yrs Exp.</span>
+                <a href="doctors.html" style="color: var(--color-primary); font-weight: 500;" class="link-arrow">View Profile <i class="ph ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="bg-deep" id="book">
+      <div class="mesh mesh-1" style="opacity: .16;"></div>
+      <div class="container container-narrow"
+        style="display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 2;"
+        data-reveal>
+        <div
+          style="width: 64px; height: 64px; border-radius: 20px; display: grid; place-items: center; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); font-size: 1.75rem; color: #fff; margin-bottom: var(--spacing-4);">
+          <i class="ph ph-truck"></i>
+        </div>
+        <h2 style="margin-bottom: var(--spacing-3);">Ready for reliable <span class="serif">chemical delivery?</span></h2>
+        <p class="lead" style="color: rgba(255,255,255,.72); margin-bottom: var(--spacing-5);">
+          Our technical sales team is ready to setup your commercial B2B credit account and custom price tiers.
+        </p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-light btn-lg">Request Account Setup <i class="ph ph-arrow-right"></i></a>
+          <a href="tel:8005550199" class="btn btn-on-deep btn-lg"><i class="ph ph-phone"></i> (800) 555-0199</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: var(--spacing-3);">
+            <img src="assets/images/logo-mark.png" class="logo-mark" alt="ChemDist Pro Logo">
+            <span class="logo-text">ChemDist <span class="logo-accent">Pro</span></span>
+          </a>
+          <p>Premier B2B distributor of industrial cleaning chemicals, heavy solvents, sanitizers, and facility supplies.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="#" aria-label="X"><i class="ph-fill ph-x-logo"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Catalog</h4>
+          <div class="footer-links">
+            <a href="services.html">Solvents &amp; Degreasers</a>
+            <a href="doctors.html">Bulk Ordering</a>
+            <a href="contact.html">Contact Sales</a>
+            <a href="blog.html">SDS Library</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Portal</h4>
+          <div class="footer-links">
+            <a href="login.html">Client Login</a>
+            <a href="register.html">Register Account</a>
+            <a href="dashboard.html">Dashboard</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-links">
+            <a href="contact.html"><i class="ph ph-map-pin"></i> 850 Industrial Parkway, Building B</a>
+            <a href="tel:8005550199"><i class="ph ph-phone"></i> (800) 555-0199</a>
+            <a href="mailto:orders@chemdistpro.com"><i class="ph ph-envelope"></i> orders@chemdistpro.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ChemDist Pro Supplies Inc. All rights reserved.</p>
+        <nav>
+          <a href="#">Privacy</a>
+          <a href="#">Terms of Sale</a>
+          <a href="#">OSHA Compliance</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" type="button" aria-label="Back to top"><i class="ph ph-arrow-up" aria-hidden="true"></i></button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

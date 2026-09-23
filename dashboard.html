@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | ChemDist Pro Client Portal</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    body { background-color: var(--color-bg-alt); }
+
+    .header {
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .dash-drawer-overlay {
+      z-index: 999;
+      top: var(--nav-height);
+      background-color: rgba(5, 25, 45, 0.45);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: calc(100vh - var(--nav-height));
+      padding-top: var(--nav-height);
+    }
+    
+    .dashboard-sidebar {
+      background-color: var(--color-surface);
+      border-right: 1px solid var(--color-border);
+      padding: var(--spacing-4) 0;
+      position: sticky;
+      top: var(--nav-height);
+      height: calc(100vh - var(--nav-height));
+      overflow-y: auto;
+    }
+    
+    .dashboard-nav-link {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      margin: 2px var(--spacing-2);
+      padding: 12px var(--spacing-2);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-muted);
+      font-weight: 500;
+      font-size: 0.9375rem;
+      transition: all var(--transition-fast);
+    }
+    
+    .dashboard-nav-link:hover {
+      background-color: var(--color-bg-alt);
+      color: var(--color-primary);
+    }
+    
+    .dashboard-nav-link.active {
+      color: var(--color-primary);
+      background-color: var(--color-primary-light);
+      box-shadow: inset 2px 0 0 var(--color-primary);
+    }
+    
+    .dashboard-nav-link i { font-size: 1.25rem; }
+    
+    .dashboard-content {
+      padding: var(--spacing-6);
+    }
+    
+    .dashboard-pane {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .dashboard-pane.active {
+      display: block;
+    }
+    
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-3);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .kpi-card {
+      background: var(--color-surface);
+      padding: var(--spacing-4);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    }
+    .kpi-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    
+    .kpi-icon {
+      width: 48px; height: 48px; border-radius: 15px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    
+    .table-container {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-soft);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      margin-bottom: var(--spacing-4);
+      /* Visible scrollbars across browsers */
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-accent, #D99B26) var(--color-bg-alt, #EBF3F3);
+    }
+
+    /* Webkit visible custom horizontal scrollbar for tables */
+    .table-container::-webkit-scrollbar {
+      height: 10px;
+      display: block;
+    }
+    .table-container::-webkit-scrollbar-track {
+      background: var(--color-bg-alt);
+      border-radius: 6px;
+    }
+    .table-container::-webkit-scrollbar-thumb {
+      background: var(--color-accent, #D99B26);
+      border-radius: 6px;
+      border: 2px solid var(--color-bg-alt);
+    }
+    .table-container::-webkit-scrollbar-thumb:hover {
+      background: var(--color-primary);
+    }
+    
+    .table-container table {
+      width: 100%;
+      min-width: 620px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    th, td { padding: var(--spacing-3); border-bottom: 1px solid var(--color-border); }
+    th { color: var(--color-text-subtle); font-weight: 600; font-size: 0.75rem; letter-spacing: .08em; text-transform: uppercase; background: var(--color-bg-alt); }
+    tbody tr { transition: background-color var(--transition-fast); }
+    tbody tr:hover { background: var(--tint); }
+    tr:last-child td { border-bottom: none; }
+    
+    .status-badge {
+      padding: 4px 8px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600;
+    }
+    .status-success { background: rgba(16,185,129,.14); color: #047857; }
+    .status-pending { background: rgba(245,158,11,.16); color: #B45309; }
+    .status-alert { background: rgba(239,68,68,.14); color: #B91C1C; }
+    [data-theme="dark"] .status-success { color: #34D399; }
+    [data-theme="dark"] .status-pending { color: #FBBF24; }
+    [data-theme="dark"] .status-alert { color: #F87171; }
+    
+    .dash-header-bar { max-width: 100%; padding-inline: var(--spacing-4); box-sizing: border-box; }
+    .dash-brand { display: flex; align-items: center; gap: var(--spacing-2); min-width: 0; }
+    .dash-brand .logo { min-width: 0; }
+    .dash-sidebar-header { display: none; }
+
+    .dash-user {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      background: var(--color-primary-light);
+      border: 1px solid var(--color-border);
+      transition: transform var(--transition-fast), background-color var(--transition-fast);
+    }
+    .dash-user:hover { transform: translateY(-1px); background: var(--tint); color: var(--color-primary); }
+
+    .welcome-banner {
+      position: relative;
+      overflow: hidden;
+      background: var(--grad-deep);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-5);
+      margin-bottom: var(--spacing-4);
+      color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-4);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .welcome-copy { position: relative; z-index: 1; max-width: 50ch; min-width: 0; }
+    .welcome-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .72);
+      margin-bottom: var(--spacing-2);
+    }
+    .welcome-banner h1 { font-size: clamp(1.4rem, 4vw, 2rem); margin-bottom: 10px; color: #fff; overflow-wrap: break-word; }
+    .welcome-banner p { color: rgba(255, 255, 255, .76); font-size: 0.9375rem; margin: 0; }
+    .welcome-actions { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .dash-columns {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: var(--spacing-4);
+      margin-bottom: var(--spacing-4);
+      align-items: start;
+      width: 100%;
+      min-width: 0;
+    }
+    .panel {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: var(--spacing-4);
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-3);
+      flex-wrap: wrap;
+    }
+    .panel-head h3 { font-size: 1.0625rem; margin: 0; }
+    .panel-head a { font-size: 0.8125rem; color: var(--color-primary); font-weight: 500; }
+
+    .timeline { list-style: none; padding: 0; margin: 0; }
+    .timeline li {
+      display: flex;
+      gap: var(--spacing-3);
+      padding-bottom: var(--spacing-3);
+      position: relative;
+    }
+    .timeline li:last-child { padding-bottom: 0; }
+    .timeline li:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      inset-inline-start: 17px;
+      top: 38px;
+      bottom: 4px;
+      width: 1px;
+      background: var(--color-border);
+    }
+    .timeline-dot {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 1.125rem;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+    .timeline-body { min-width: 0; }
+    .timeline-body strong { display: block; font-size: 0.9375rem; overflow-wrap: break-word; }
+    .timeline-body span { font-size: 0.8125rem; color: var(--color-text-muted); }
+
+    .forecast-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-2);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.875rem;
+      flex-wrap: wrap;
+    }
+    .forecast-row:last-child { border-bottom: none; }
+    .forecast-meter { width: 96px; height: 6px; border-radius: var(--radius-full); background: var(--color-border); overflow: hidden; flex-shrink: 0; }
+    .forecast-meter span { display: block; height: 100%; border-radius: inherit; }
+
+    .care-team-row { display: flex; align-items: center; gap: var(--spacing-2); padding: 10px 0; flex-wrap: wrap; }
+    .care-team-row + .care-team-row { border-top: 1px solid var(--color-border); }
+    .care-team-row img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .care-team-row strong { display: block; font-size: 0.9375rem; }
+    .care-team-row span { font-size: 0.8125rem; color: var(--color-text-muted); }
+
+    @media (max-width: 1200px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .dash-columns { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .dashboard-content { padding: 16px 12px; }
+      .welcome-banner { padding: 18px 14px; gap: 14px; flex-direction: column; align-items: stretch; }
+      .welcome-copy { max-width: 100%; }
+      .welcome-actions { width: 100%; flex-direction: column; gap: 8px; }
+      .welcome-actions .btn { width: 100%; justify-content: center; }
+
+      .kpi-grid { grid-template-columns: 1fr; gap: 12px; }
+      .kpi-card { padding: 12px 14px; gap: 12px; width: 100%; box-sizing: border-box; }
+      .panel { padding: 14px; }
+      
+      .card-grid { grid-template-columns: 1fr; gap: 14px; }
+      .card { padding: 16px 14px; width: 100%; box-sizing: border-box; }
+
+      h1, h2, h3, h4, p, span, strong { overflow-wrap: break-word; word-break: break-word; }
+    }
+
+    @media (max-width: 380px) {
+      .dashboard-content { padding: 12px 10px; }
+      .dash-header-bar { padding-inline: 10px; }
+      .logo .logo-text { font-size: 17px; }
+      .logo .logo-mark { height: 36px; width: 36px; min-width: 32px; }
+      .kpi-card h3 { font-size: 1rem; }
+    }
+
+    @media (max-width: 1024px) {
+      .dashboard-layout { grid-template-columns: 1fr; }
+
+      .dashboard-sidebar {
+        position: fixed;
+        top: var(--nav-height);
+        inset-inline-start: 0;
+        z-index: 1002;
+        width: 300px;
+        max-width: 84%;
+        height: calc(100dvh - var(--nav-height));
+        padding: var(--spacing-3) 0 var(--spacing-4);
+        border-right: none;
+        border-inline-end: 1px solid var(--color-border);
+        box-shadow: var(--shadow-hover);
+        transform: translateX(-100%);
+        visibility: hidden;
+        transition: transform 0.42s var(--ease-out-expo), visibility 0.42s;
+      }
+      [dir="rtl"] .dashboard-sidebar { transform: translateX(100%); }
+      .dashboard-sidebar.active,
+      [dir="rtl"] .dashboard-sidebar.active { transform: translateX(0); visibility: visible; }
+
+      .dash-sidebar-header { display: none; }
+      .dashboard-nav-link { margin: 2px var(--spacing-2); }
+    }
+
+    @media (min-width: 1025px) {
+      .dash-hamburger { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container dash-header-bar">
+      <div class="dash-brand">
+        <button class="icon-btn dash-hamburger" aria-label="Open portal menu" aria-controls="dash-sidebar" aria-expanded="false">
+          <i class="ph ph-list"></i>
+        </button>
+        <a href="index.html" class="logo">
+          <img src="assets/images/logo.png" class="logo-mark" alt="ChemDist Pro Logo">
+          <span class="logo-text">ChemDist <span class="logo-accent">Pro</span></span>
+        </a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="ph ph-moon"></i>
+        </button>
+        <button class="icon-btn rtl-toggle" aria-label="Toggle RTL" title="Toggle RTL">
+          <i class="ph ph-arrows-left-right"></i>
+        </button>
+        <a href="#settings" class="dash-user" aria-label="Account settings" title="Account settings">
+          <i class="ph ph-user"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    <div class="mobile-drawer-overlay dash-drawer-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar" id="dash-sidebar">
+      <div class="dash-sidebar-header">
+        <span style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">Portal Navigation</span>
+        <button class="icon-btn dash-drawer-close" aria-label="Close portal menu">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <a href="#overview" class="dashboard-nav-link active"><i class="ph ph-squares-four"></i> Overview</a>
+      <a href="#appointments" class="dashboard-nav-link"><i class="ph ph-package"></i> Supply Orders</a>
+      <a href="#immunotherapy" class="dashboard-nav-link"><i class="ph ph-truck"></i> Freight Schedules</a>
+      <a href="#results" class="dashboard-nav-link"><i class="ph ph-file-text"></i> SDS Downloads</a>
+      <a href="#actionplans" class="dashboard-nav-link"><i class="ph ph-shield-check"></i> HazCom Binders</a>
+      <a href="#billing" class="dashboard-nav-link"><i class="ph ph-credit-card"></i> Invoices &amp; Net-30</a>
+      <a href="#settings" class="dashboard-nav-link"><i class="ph ph-gear"></i> Settings</a>
+      <a href="index.html" class="dashboard-nav-link" style="color: var(--color-error); margin-top: var(--spacing-4);"><i class="ph ph-sign-out"></i> Logout</a>
+    </aside>
+
+    <!-- Content Area -->
+    <main class="dashboard-content">
+      
+      <!-- Pane: Overview -->
+      <div id="overview" class="dashboard-pane active">
+
+        <!-- Welcome banner -->
+        <section class="welcome-banner">
+          <div class="welcome-copy">
+            <span class="welcome-date"><i class="ph ph-buildings"></i> Apex Manufacturing Corp &middot; Account #CD-8842</span>
+            <h1>Welcome back, Marcus!</h1>
+            <p>Your bi-weekly chemical supply shipment of 10x 55-gallon degreaser drums is in transit and scheduled for dock delivery tomorrow at 09:00 AM.</p>
+          </div>
+          <div class="welcome-actions">
+            <button class="btn btn-light" onclick="alert('Order modal opening...')">
+              <i class="ph ph-plus"></i> Place Order
+            </button>
+            <button class="btn btn-on-deep" onclick="alert('Contacting sales rep...')">
+              <i class="ph ph-headset"></i> Contact Sales Rep
+            </button>
+          </div>
+        </section>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-icon" style="background: #eff6ff; color: #0284c7;"><i class="ph ph-truck"></i></div>
+            <div>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem; margin: 0;">Next Dock Shipment</p>
+              <h3 style="font-size: 1.125rem; margin: 4px 0;">Tomorrow @ 9:00 AM</h3>
+              <p style="font-size: 0.75rem; color: var(--color-primary); margin: 0;">10x 55-Gal Drums (SD-400)</p>
+            </div>
+          </div>
+          
+          <div class="kpi-card">
+            <div class="kpi-icon" style="background: #f0fdf4; color: #16a34a;"><i class="ph ph-repeat"></i></div>
+            <div>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem; margin: 0;">Recurring Schedule</p>
+              <h3 style="font-size: 1.125rem; margin: 4px 0;">Bi-Weekly Auto-Reorder</h3>
+              <p style="font-size: 0.75rem; color: #16a34a; margin: 0;">Active (Tier-1 Discount)</p>
+            </div>
+          </div>
+          
+          <div class="kpi-card">
+            <div class="kpi-icon" style="background: #fef2f2; color: #dc2626;"><i class="ph ph-receipt"></i></div>
+            <div>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem; margin: 0;">Net-30 Invoice Balance</p>
+              <h3 style="font-size: 1.125rem; margin: 4px 0;">$3,450.00</h3>
+              <a href="#billing" onclick="document.querySelector('a[href=\'#billing\']').click()" style="font-size: 0.75rem; color: var(--color-primary); margin: 0; text-decoration: underline;">Pay Invoice</a>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon" style="background: #fff7ed; color: #d9842b;"><i class="ph ph-file-text"></i></div>
+            <div>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem; margin: 0;">Active SDS Library</p>
+              <h3 style="font-size: 1.125rem; margin: 4px 0;">14 PDF Documents</h3>
+              <a href="#results" onclick="document.querySelector('a[href=\'#results\']').click()" style="font-size: 0.75rem; color: var(--color-primary); margin: 0; text-decoration: underline;">Download Binder</a>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon" style="background: #f5f3ff; color: #7c5cd6;"><i class="ph ph-drop"></i></div>
+            <div>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem; margin: 0;">Monthly Volume</p>
+              <h3 style="font-size: 1.125rem; margin: 4px 0;">1,100 Gallons</h3>
+              <p style="font-size: 0.75rem; color: #16a34a; margin: 0;">15% Bulk Tier Savings</p>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon" style="background: #f0fdf4; color: #16a34a;"><i class="ph ph-shield-check"></i></div>
+            <div>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem; margin: 0;">OSHA Audit Status</p>
+              <h3 style="font-size: 1.125rem; margin: 4px 0;">100% Compliant</h3>
+              <a href="#actionplans" onclick="document.querySelector('a[href=\'#actionplans\']').click()" style="font-size: 0.75rem; color: var(--color-primary); margin: 0; text-decoration: underline;">View Labels</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schedule + Logistics forecast -->
+        <div class="dash-columns">
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Upcoming Freight Deliveries</h3>
+              <a href="#appointments" onclick="document.querySelector('a[href=\'#appointments\']').click()">View all orders</a>
+            </div>
+            <ul class="timeline">
+              <li>
+                <div class="timeline-dot"><i class="ph ph-truck"></i></div>
+                <div class="timeline-body">
+                  <strong>10x 55-Gal Heavy Degreaser Drums (SD-400)</strong>
+                  <span>Tomorrow · 9:00 AM · Freight Truck #104</span>
+                </div>
+              </li>
+              <li>
+                <div class="timeline-dot"><i class="ph ph-package"></i></div>
+                <div class="timeline-body">
+                  <strong>5x Cases EPA Disinfectant Concentrate (DS-100)</strong>
+                  <span>Next Tue · 11:00 AM · Regional Courier</span>
+                </div>
+              </li>
+              <li>
+                <div class="timeline-dot"><i class="ph ph-repeat"></i></div>
+                <div class="timeline-body">
+                  <strong>Bi-Weekly Automated Re-Order Dispatch</strong>
+                  <span>Oct 01, 2026 · Automatic Processing</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Warehouse Stock Levels</h3>
+              <span style="font-size: 0.75rem; color: var(--color-text-muted);">Main Facility</span>
+            </div>
+            <div class="forecast-row">
+              <span>Heavy Degreaser SD-400</span>
+              <div class="forecast-meter"><span style="width: 85%; background: var(--color-success);"></span></div>
+            </div>
+            <div class="forecast-row">
+              <span>Surface Sanitizer DS-100</span>
+              <div class="forecast-meter"><span style="width: 45%; background: #d9842b;"></span></div>
+            </div>
+            <div class="forecast-row">
+              <span>Floor Stripper FC-90</span>
+              <div class="forecast-meter"><span style="width: 90%; background: var(--color-success);"></span></div>
+            </div>
+            <div class="forecast-row">
+              <span>Solvent Wash PW-250</span>
+              <div class="forecast-meter"><span style="width: 20%; background: var(--color-error);"></span></div>
+            </div>
+            <p style="font-size: 0.8125rem; color: var(--color-text-muted); margin: var(--spacing-2) 0 0;">
+              Solvent Wash PW-250 is low stock (20%). Automatic re-order trigger activated.
+            </p>
+          </section>
+        </div>
+
+      </div>
+      
+      <!-- Pane: Supply Orders -->
+      <div id="appointments" class="dashboard-pane">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-4);">
+          <h2 style="font-size: 1.5rem;">Supply Orders &amp; Shipment Tracking</h2>
+          <button class="btn btn-primary" onclick="alert('Order modal opening...')"><i class="ph ph-plus"></i> Place Bulk Order</button>
+        </div>
+        
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Order # &amp; Date</th>
+                <th>Product Description</th>
+                <th>Quantity</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Order # &amp; Date">#ORD-9082 • Tomorrow</td>
+                <td data-label="Product Description">Heavy Duty Solvent Degreaser SD-400</td>
+                <td data-label="Quantity">10x 55-Gal Drums</td>
+                <td data-label="Status"><span class="status-badge status-pending">In Transit</span></td>
+                <td data-label="Actions"><button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.75rem;">Track Truck</button></td>
+              </tr>
+              <tr>
+                <td data-label="Order # &amp; Date">#ORD-8810 • Sep 01</td>
+                <td data-label="Product Description">ProGuard Surface Sanitizer DS-100</td>
+                <td data-label="Quantity">5x Cases (4x1 Gal)</td>
+                <td data-label="Status"><span class="status-badge status-success">Delivered</span></td>
+                <td data-label="Actions"><button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.75rem;">Re-Order</button></td>
+              </tr>
+              <tr>
+                <td data-label="Order # &amp; Date">#ORD-8520 • Aug 15</td>
+                <td data-label="Product Description">ToughFloor Concrete Sealer FC-90</td>
+                <td data-label="Quantity">2x 275-Gal Totes</td>
+                <td data-label="Status"><span class="status-badge status-success">Delivered</span></td>
+                <td data-label="Actions"><button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.75rem;">Re-Order</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Pane: Freight Schedules -->
+      <div id="immunotherapy" class="dashboard-pane">
+        <h2 style="font-size: 1.5rem; margin-bottom: var(--spacing-4);">Automated Freight Delivery Schedule</h2>
+        <div class="card" style="text-align: left; align-items: stretch; margin-bottom: var(--spacing-4);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-3);">
+            <div>
+              <h3 style="margin: 0;">Bi-Weekly Bulk Chemical Logistics Plan</h3>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem;">Contract Term: Jan 2026 - Dec 2026</p>
+            </div>
+            <span class="status-badge status-success">Active</span>
+          </div>
+          
+          <div style="background: var(--color-bg-alt); padding: var(--spacing-3); border-radius: var(--radius-md); margin-bottom: var(--spacing-4);">
+            <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 8px;">
+              <span>Logistics Delivery Reliability</span>
+              <strong>99.4%</strong>
+            </div>
+            <div style="height: 8px; background: var(--color-border); border-radius: var(--radius-full); overflow: hidden;">
+              <div style="height: 100%; width: 99.4%; background: var(--color-success);"></div>
+            </div>
+          </div>
+          
+          <h4>Recent &amp; Scheduled Fleet Dispatches</h4>
+          <ul style="margin-top: var(--spacing-2); list-style: none; padding: 0;">
+            <li style="padding: var(--spacing-2) 0; border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between;">
+              <span><i class="ph-fill ph-check-circle" style="color: var(--color-success); margin-right: 8px;"></i> Sep 01, 2026</span>
+              <span style="color: var(--color-text-muted); font-size: 0.875rem;">10x Drums SD-400 &middot; Delivered</span>
+            </li>
+            <li style="padding: var(--spacing-2) 0; border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between;">
+              <span><i class="ph-fill ph-circle" style="color: var(--color-primary); margin-right: 8px;"></i> Sep 24, 2026</span>
+              <span style="color: var(--color-text-muted); font-size: 0.875rem;">10x Drums SD-400 &middot; Scheduled Truck</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Pane: SDS Downloads -->
+      <div id="results" class="dashboard-pane">
+        <h2 style="font-size: 1.5rem; margin-bottom: var(--spacing-4);">GHS Safety Data Sheet (SDS) Library</h2>
+        
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Chemical SKU</th>
+                <th>Product Name</th>
+                <th>GHS Revision</th>
+                <th>Hazard Status</th>
+                <th>Download</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Chemical SKU">SD-400</td>
+                <td data-label="Product Name">Heavy Duty Solvent Degreaser</td>
+                <td data-label="GHS Revision">Rev 2026.1</td>
+                <td data-label="Hazard Status"><span class="status-badge status-success">OSHA Verified</span></td>
+                <td data-label="Download"><button class="btn btn-outline" onclick="alert('Downloading SD-400 SDS PDF...')" style="padding: 4px 8px; font-size: 0.75rem;"><i class="ph ph-download-simple"></i> SDS PDF</button></td>
+              </tr>
+              <tr>
+                <td data-label="Chemical SKU">DS-100</td>
+                <td data-label="Product Name">ProGuard Surface Sanitizer</td>
+                <td data-label="GHS Revision">Rev 2026.1</td>
+                <td data-label="Hazard Status"><span class="status-badge status-success">EPA Reg #4829</span></td>
+                <td data-label="Download"><button class="btn btn-outline" onclick="alert('Downloading DS-100 SDS PDF...')" style="padding: 4px 8px; font-size: 0.75rem;"><i class="ph ph-download-simple"></i> SDS PDF</button></td>
+              </tr>
+              <tr>
+                <td data-label="Chemical SKU">FC-90</td>
+                <td data-label="Product Name">ToughFloor Concrete Sealer</td>
+                <td data-label="GHS Revision">Rev 2025.4</td>
+                <td data-label="Hazard Status"><span class="status-badge status-success">Low-VOC</span></td>
+                <td data-label="Download"><button class="btn btn-outline" onclick="alert('Downloading FC-90 SDS PDF...')" style="padding: 4px 8px; font-size: 0.75rem;"><i class="ph ph-download-simple"></i> SDS PDF</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Pane: HazCom Binders -->
+      <div id="actionplans" class="dashboard-pane">
+        <h2 style="font-size: 1.5rem; margin-bottom: var(--spacing-4);">OSHA HazCom Compliance &amp; Secondary Labels</h2>
+        
+        <div class="card-grid">
+          <div class="card" style="align-items: flex-start; text-align: left;">
+            <div style="width: 48px; height: 48px; background: #eff6ff; color: #0284c7; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: var(--spacing-3);">
+              <i class="ph ph-file-text"></i>
+            </div>
+            <h3 style="margin-bottom: 8px;">Master Chemical Binder PDF</h3>
+            <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: var(--spacing-4);">Compiled single-file PDF containing SDS for all 14 stocked chemicals at your facility.</p>
+            <div style="display: flex; gap: 8px; width: 100%; margin-top: auto;">
+              <button class="btn btn-primary" onclick="alert('Exporting Master SDS Binder...')" style="flex: 1; padding: 8px;"><i class="ph ph-download-simple"></i> Export Master Binder</button>
+            </div>
+          </div>
+
+          <div class="card" style="align-items: flex-start; text-align: left;">
+            <div style="width: 48px; height: 48px; background: #fff7ed; color: #d9842b; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: var(--spacing-3);">
+              <i class="ph ph-tag"></i>
+            </div>
+            <h3 style="margin-bottom: 8px;">Secondary Container Labels</h3>
+            <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: var(--spacing-4);">Printable GHS pictogram stickers for workplace squeeze bottles and secondary spray tanks.</p>
+            <div style="display: flex; gap: 8px; width: 100%; margin-top: auto;">
+              <button class="btn btn-primary" onclick="alert('Opening Label Printer Utility...')" style="flex: 1; padding: 8px;"><i class="ph ph-printer"></i> Print Secondary Labels</button>
+            </div>
+          </div>
+
+          <div class="card" style="align-items: flex-start; text-align: left;">
+            <div style="width: 48px; height: 48px; background: #f0fdf4; color: #16a34a; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: var(--spacing-3);">
+              <i class="ph ph-shield"></i>
+            </div>
+            <h3 style="margin-bottom: 8px;">Chemical Spill Response Protocol</h3>
+            <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: var(--spacing-4);">Emergency spill containment poster for warehouse loading docks and chemical storage rooms.</p>
+            <div style="display: flex; gap: 8px; width: 100%; margin-top: auto;">
+              <button class="btn btn-primary" onclick="alert('Downloading Spill Poster PDF...')" style="flex: 1; padding: 8px;"><i class="ph ph-file-pdf"></i> Download Poster</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Pane: Invoices & Net-30 -->
+      <div id="billing" class="dashboard-pane">
+        <h2 style="font-size: 1.5rem; margin-bottom: var(--spacing-4);">B2B Invoices &amp; Net-30 Credit Account</h2>
+        <div class="card" style="text-align: left; align-items: stretch; margin-bottom: var(--spacing-4); border: 2px solid var(--color-error);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <h3 style="margin: 0; color: var(--color-error);">Current Amount Due: $3,450.00</h3>
+              <p style="color: var(--color-text-muted); font-size: 0.875rem; margin-top: 4px;">Invoice #INV-2026-0881 &middot; Net-30 Terms Due Oct 01, 2026</p>
+            </div>
+            <button class="btn btn-primary" onclick="alert('ACH / Wire Payment Modal Opening...')">Pay Invoice (ACH / Wire)</button>
+          </div>
+        </div>
+        
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Invoice # &amp; Date</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Due Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Invoice # &amp; Date">#INV-2026-0881 &middot; Sep 01</td>
+                <td data-label="Description">10x 55-Gal Drums SD-400 Degreaser</td>
+                <td data-label="Amount">$3,450.00</td>
+                <td data-label="Due Date">Oct 01, 2026</td>
+                <td data-label="Status"><span class="status-badge status-pending">Net-30 Active</span></td>
+              </tr>
+              <tr>
+                <td data-label="Invoice # &amp; Date">#INV-2026-0740 &middot; Aug 15</td>
+                <td data-label="Description">2x 275-Gal Totes FC-90 Concrete Sealer</td>
+                <td data-label="Amount">$4,800.00</td>
+                <td data-label="Due Date">Sep 15, 2026</td>
+                <td data-label="Status"><span class="status-badge status-success">Paid via ACH</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Pane: Settings -->
+      <div id="settings" class="dashboard-pane">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-4); flex-wrap: wrap; gap: var(--spacing-3);">
+          <div>
+            <h2 style="font-size: 1.5rem; margin: 0;">Account &amp; Facility Settings</h2>
+            <p style="color: var(--color-text-muted); margin-top: 4px; font-size: 0.875rem;">Manage company profile, dock delivery addresses, and account contacts.</p>
+          </div>
+          <span class="status-badge status-success" style="padding: 6px 14px; font-size: 0.875rem;">
+            <i class="ph ph-shield-check"></i> Net-30 Enterprise Credit Approved
+          </span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: var(--spacing-5);">
+          <!-- Company Profile Form Card -->
+          <div class="card" style="align-items: stretch; text-align: left; padding: var(--spacing-5);">
+            <h3 style="margin-bottom: var(--spacing-4); font-size: 1.125rem; display: flex; align-items: center; gap: 8px;">
+              <i class="ph ph-buildings" style="color: var(--color-primary);"></i> Enterprise Company Profile
+            </h3>
+
+            <form class="validate-form" onsubmit="event.preventDefault(); alert('Company settings saved!');">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--spacing-4);">
+                <div class="form-group">
+                  <label class="form-label">Company Name</label>
+                  <input type="text" class="form-control" name="fullname" value="Apex Manufacturing Corp" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Corporate Email</label>
+                  <input type="email" class="form-control" name="email" value="procurement@apexind.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Dock Phone Number</label>
+                  <input type="tel" class="form-control" name="phone" value="(800) 555-0199" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Primary Loading Dock Address</label>
+                  <input type="text" class="form-control" name="dock" value="Building C, Loading Dock #4, 100 Industrial Pkwy" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Dedicated Account Specialist</label>
+                  <input type="text" class="form-control" name="doctor" value="Robert Vance (Technical Sales Lead)" readonly style="opacity: 0.85; background: var(--color-bg-alt);">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Tax Exemption / FEIN</label>
+                  <input type="text" class="form-control" name="tax_id" value="FEIN #34-9810294 (Exempt)">
+                </div>
+              </div>
+
+              <div style="margin-top: var(--spacing-4); text-align: center;">
+                <button type="submit" class="btn btn-primary">
+                  <i class="ph ph-check"></i> Save Company Profile
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
