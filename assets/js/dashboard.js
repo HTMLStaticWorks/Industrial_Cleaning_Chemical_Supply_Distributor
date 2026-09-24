@@ -133,10 +133,14 @@ function initDashboardTabs() {
   
   tabLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-      e.preventDefault();
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) {
+        // Page link (e.g. index.html or login.html) — allow normal navigation
+        return;
+      }
       
-      const targetId = link.getAttribute('href').substring(1);
-      if(targetId === 'logout') return; // Let actual logout link work if it navigates away
+      e.preventDefault();
+      const targetId = href.substring(1);
       
       // Remove active class from all links and panes
       tabLinks.forEach(t => t.classList.remove('active'));
