@@ -29,6 +29,7 @@
       <nav class="nav-desktop">
         <a href="index.html" class="nav-link">Home</a>
         <a href="home2.html" class="nav-link">Home2</a>
+        <a href="about.html" class="nav-link">About</a>
         <a href="services.html" class="nav-link active">Catalog</a>
         <a href="doctors.html" class="nav-link">Ordering</a>
         <a href="blog.html" class="nav-link">SDS</a>
@@ -68,6 +69,7 @@
     <nav class="drawer-nav">
       <a href="index.html" class="drawer-nav-link">Home</a>
       <a href="home2.html" class="drawer-nav-link">Home2</a>
+      <a href="about.html" class="drawer-nav-link">About</a>
       <a href="services.html" class="drawer-nav-link active">Catalog</a>
       <a href="doctors.html" class="drawer-nav-link">Ordering</a>
       <a href="blog.html" class="drawer-nav-link">SDS</a>
@@ -92,8 +94,8 @@
 
       <div class="container">
         <div class="section-header" style="margin-bottom: 0;">
-          <span class="eyebrow centered">Product Range</span>
-          <h1>Industrial Chemical <span class="serif grad-text">Catalog</span></h1>
+          <span class="eyebrow centered">B2B Product Range</span>
+          <h1>Chemical <span class="serif grad-text">Catalog</span></h1>
           <p class="lead">Comprehensive chemical formulations, heavy degreasers, and EPA disinfectants packaged in cases, drums, and totes.</p>
         </div>
       </div>
@@ -116,6 +118,10 @@
           </ul>
           <div class="service-note">
             <strong>Compliance:</strong> All solvents include GHS SDS hazard labels and OSHA compliance documentation.
+          </div>
+          <div class="service-cta-bar">
+            <a href="doctors.html?category=degreasers" class="btn btn-primary"><i class="ph ph-receipt"></i> Request Pricing</a>
+            <a href="blog.html" class="btn btn-outline"><i class="ph ph-file-arrow-down"></i> Download GHS SDS</a>
           </div>
         </div>
         <div style="order: 2;" data-reveal="right">
@@ -142,6 +148,10 @@
             <li><strong>Hydrogen Peroxide Blends:</strong> Fast 1-minute pathogen kill times.</li>
             <li><strong>Concentrate Ratios:</strong> Dilution rates up to 1:256 for maximum cost efficiency.</li>
           </ul>
+          <div class="service-cta-bar">
+            <a href="doctors.html?category=sanitizers" class="btn btn-primary"><i class="ph ph-receipt"></i> Request Sanitizer Pricing</a>
+            <a href="blog.html" class="btn btn-outline"><i class="ph ph-file-arrow-down"></i> Download EPA Kill Claims</a>
+          </div>
         </div>
       </div>
     </section>
@@ -161,9 +171,204 @@
             <li><strong>Protective Sealants:</strong> High-traffic slip-resistant concrete sealers.</li>
             <li><strong>Machine Detergents:</strong> Low-foam formulas designed for automatic scrubbers.</li>
           </ul>
+          <div class="service-cta-bar">
+            <a href="doctors.html?category=floorcare" class="btn btn-primary"><i class="ph ph-receipt"></i> Request Care Quote</a>
+            <a href="blog.html" class="btn btn-outline"><i class="ph ph-file-arrow-down"></i> Download Slip Specs</a>
+          </div>
         </div>
         <div style="order: 2;" data-reveal="right">
           <img src="https://vaibhavfacility.in/wp-content/uploads/2026/04/Complete-Guide-to-Commercial-Cleaning-Tools-Equipment-scaled.png" alt="Floor Care and Scrubber Detergents" class="media-frame">
+        </div>
+      </div>
+    </section>
+
+    <!-- OSHA HazCom PPE & Dispensing -->
+    <section class="bg-alt" id="safety-gear">
+      <div class="container split tight">
+        <div style="order: 1;" data-reveal="left">
+          <img src="https://www.thesafetymaster.com/wp-content/uploads/2022/03/Personal-Protective-Equipment-1200x900.jpg" alt="OSHA PPE and Chemical Dilution Proportioning Systems" class="media-frame">
+        </div>
+        <div class="service-copy" style="order: 2;" data-reveal="right">
+          <div class="card-icon" style="margin-bottom: var(--spacing-3);">
+            <i class="ph ph-hard-hat"></i>
+          </div>
+          <span class="eyebrow" style="margin-bottom: var(--spacing-2);">Safety &amp; Compliance</span>
+          <h2 style="margin-bottom: var(--spacing-3);">OSHA HazCom PPE &amp; <span class="serif">Dilution Systems</span></h2>
+          <p style="color: var(--color-text-muted); margin-bottom: var(--spacing-3);">Protect facility teams and eliminate chemical mixing errors with engineered proportioning dispensers and heavy-duty HazMat PPE gear.</p>
+          <ul class="service-points">
+            <li><strong>PPE Gear:</strong> Chemical-resistant splash goggles, butyl/nitrile gloves, heavy aprons.</li>
+            <li><strong>Automated Dosing:</strong> Wall-mounted venturi dispensers with ASSE 1055 backflow prevention.</li>
+            <li><strong>Spill Response:</strong> 55-gallon universal HazMat emergency salvage spill kits.</li>
+          </ul>
+          <div class="service-cta-bar">
+            <a href="doctors.html?category=safety" class="btn btn-primary"><i class="ph ph-shield-check"></i> Request Equipme Quote</a>
+            <a href="blog.html" class="btn btn-outline"><i class="ph ph-file-text"></i> Dispenser Manual (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURED PRODUCTS SKU GRID ==================== -->
+    <section id="featured-products">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="eyebrow centered"><i class="ph ph-tag"></i> Active Inventory Explorer</span>
+          <h2>Explore high-demand <span class="serif">industrial SKUs</span></h2>
+          <p>Browse top-selling chemical formulations with instantaneous pricing quote requests and downloadable Safety Data Sheets.</p>
+          
+          <div class="catalog-filter-bar" style="margin-top: var(--spacing-4);">
+            <button type="button" class="catalog-filter-btn active" data-filter="all"><i class="ph ph-squares-four"></i> All Products (6)</button>
+            <button type="button" class="catalog-filter-btn" data-filter="degreasers"><i class="ph ph-drop"></i> Solvents &amp; Degreasers</button>
+            <button type="button" class="catalog-filter-btn" data-filter="sanitizers"><i class="ph ph-shield-plus"></i> EPA Disinfectants</button>
+            <button type="button" class="catalog-filter-btn" data-filter="floorcare"><i class="ph ph-broom"></i> Floor Care</button>
+            <button type="button" class="catalog-filter-btn" data-filter="safety"><i class="ph ph-hard-hat"></i> Safety &amp; Dosing</button>
+          </div>
+        </div>
+
+        <div class="product-sku-grid">
+          <!-- SKU 1 -->
+          <div class="product-sku-card" data-category="degreasers" data-reveal>
+            <div class="sku-header">
+              <span class="sku-id">SKU: SD-500</span>
+              <span class="sku-availability"><span class="dot"></span> In Stock · Ships 24h</span>
+            </div>
+            <h3 class="sku-title">MaxSolv Heavy-Duty Terpene Degreaser</h3>
+            <p class="sku-desc">Citrus terpene solvent formulated for asphalt, crude oil, and machinery tar removal with zero residue.</p>
+            <div class="sku-specs-grid">
+              <div class="sku-spec-item"><strong>Flash Point:</strong> <span>&gt; 145&deg;F</span></div>
+              <div class="sku-spec-item"><strong>Dilution:</strong> <span>Ready / 1:10</span></div>
+              <div class="sku-spec-item"><strong>Packaging:</strong> <span>5G | 55G | 275G</span></div>
+              <div class="sku-spec-item"><strong>Compliance:</strong> <span>OSHA HazCom</span></div>
+            </div>
+            <div class="sku-cta-row">
+              <a href="doctors.html?sku=SD-500" class="btn btn-primary btn-sm"><i class="ph ph-receipt"></i> Request Quote</a>
+              <a href="blog.html" class="btn btn-outline btn-sm"><i class="ph ph-file-arrow-down"></i> SDS Sheet</a>
+            </div>
+          </div>
+
+          <!-- SKU 2 -->
+          <div class="product-sku-card" data-category="sanitizers" style="--reveal-delay: 80ms;" data-reveal>
+            <div class="sku-header">
+              <span class="sku-id">SKU: DS-100</span>
+              <span class="sku-availability"><span class="dot"></span> In Stock · EPA Reg</span>
+            </div>
+            <h3 class="sku-title">ProGuard Broad-Spectrum Virucide Disinfectant</h3>
+            <p class="sku-desc">Hospital-grade quat disinfectant with 1-minute kill claims against Norovirus, MRSA, and Influenza.</p>
+            <div class="sku-specs-grid">
+              <div class="sku-spec-item"><strong>EPA Reg:</strong> <span># 10324-155</span></div>
+              <div class="sku-spec-item"><strong>Dilution:</strong> <span>Concentrate 1:64</span></div>
+              <div class="sku-spec-item"><strong>Packaging:</strong> <span>4x1G | 55G Drum</span></div>
+              <div class="sku-spec-item"><strong>Kill Time:</strong> <span>60 Seconds</span></div>
+            </div>
+            <div class="sku-cta-row">
+              <a href="doctors.html?sku=DS-100" class="btn btn-primary btn-sm"><i class="ph ph-receipt"></i> Request Quote</a>
+              <a href="blog.html" class="btn btn-outline btn-sm"><i class="ph ph-file-arrow-down"></i> SDS Sheet</a>
+            </div>
+          </div>
+
+          <!-- SKU 3 -->
+          <div class="product-sku-card" data-category="floorcare" style="--reveal-delay: 160ms;" data-reveal>
+            <div class="sku-header">
+              <span class="sku-id">SKU: CS-800</span>
+              <span class="sku-availability"><span class="dot"></span> In Stock · ASTM Slip</span>
+            </div>
+            <h3 class="sku-title">DiamondShield 25% High-Solids Concrete Finish</h3>
+            <p class="sku-desc">Pure acrylic polymer floor finish providing wet-look gloss and chemical resistance for warehouse terrazzo.</p>
+            <div class="sku-specs-grid">
+              <div class="sku-spec-item"><strong>Solids %:</strong> <span>25% Acrylic</span></div>
+              <div class="sku-spec-item"><strong>Coverage:</strong> <span>2,000 sq ft/Gal</span></div>
+              <div class="sku-spec-item"><strong>Packaging:</strong> <span>5G Pail | 55G Drum</span></div>
+              <div class="sku-spec-item"><strong>Slip Rating:</strong> <span>ASTM D-2047</span></div>
+            </div>
+            <div class="sku-cta-row">
+              <a href="doctors.html?sku=CS-800" class="btn btn-primary btn-sm"><i class="ph ph-receipt"></i> Request Quote</a>
+              <a href="blog.html" class="btn btn-outline btn-sm"><i class="ph ph-file-arrow-down"></i> SDS Sheet</a>
+            </div>
+          </div>
+
+          <!-- SKU 4 -->
+          <div class="product-sku-card" data-category="floorcare" data-reveal>
+            <div class="sku-header">
+              <span class="sku-id">SKU: FS-300</span>
+              <span class="sku-availability"><span class="dot"></span> In Stock · Rapid Action</span>
+            </div>
+            <h3 class="sku-title">AquaStrip Non-Ammoniated Floor Stripper</h3>
+            <p class="sku-desc">Fast-acting deep stripper that dissolves multiple coats of aged acrylic finish without harsh ammonia fumes.</p>
+            <div class="sku-specs-grid">
+              <div class="sku-spec-item"><strong>Odor:</strong> <span>Low Citrus Odor</span></div>
+              <div class="sku-spec-item"><strong>Dilution:</strong> <span>1:4 to 1:8</span></div>
+              <div class="sku-spec-item"><strong>Packaging:</strong> <span>5G | 55G | 275G</span></div>
+              <div class="sku-spec-item"><strong>Action Time:</strong> <span>5 Minutes</span></div>
+            </div>
+            <div class="sku-cta-row">
+              <a href="doctors.html?sku=FS-300" class="btn btn-primary btn-sm"><i class="ph ph-receipt"></i> Request Quote</a>
+              <a href="blog.html" class="btn btn-outline btn-sm"><i class="ph ph-file-arrow-down"></i> SDS Sheet</a>
+            </div>
+          </div>
+
+          <!-- SKU 5 -->
+          <div class="product-sku-card" data-category="safety" style="--reveal-delay: 80ms;" data-reveal>
+            <div class="sku-header">
+              <span class="sku-id">SKU: EQ-400</span>
+              <span class="sku-availability"><span class="dot"></span> In Stock · ASSE 1055</span>
+            </div>
+            <h3 class="sku-title">AccuDose 4-Station Wall Dilution Proportioner</h3>
+            <p class="sku-desc">Toolless dilution station with chemical lockouts and high/low flow bottle and bucket filling hoses.</p>
+            <div class="sku-specs-grid">
+              <div class="sku-spec-item"><strong>Stations:</strong> <span>4 Chemical Ports</span></div>
+              <div class="sku-spec-item"><strong>Backflow:</strong> <span>ASSE 1055 Certified</span></div>
+              <div class="sku-spec-item"><strong>Flow Rate:</strong> <span>1.0 &amp; 3.5 GPM</span></div>
+              <div class="sku-spec-item"><strong>Mounting:</strong> <span>Wall Bracket Inc.</span></div>
+            </div>
+            <div class="sku-cta-row">
+              <a href="doctors.html?sku=EQ-400" class="btn btn-primary btn-sm"><i class="ph ph-receipt"></i> Request Quote</a>
+              <a href="blog.html" class="btn btn-outline btn-sm"><i class="ph ph-file-arrow-down"></i> Manual PDF</a>
+            </div>
+          </div>
+
+          <!-- SKU 6 -->
+          <div class="product-sku-card" data-category="safety" style="--reveal-delay: 160ms;" data-reveal>
+            <div class="sku-header">
+              <span class="sku-id">SKU: SK-55</span>
+              <span class="sku-availability"><span class="dot"></span> In Stock · DOT Salvage</span>
+            </div>
+            <h3 class="sku-title">ChemGuard 55-Gal HazMat Spill Response Kit</h3>
+            <p class="sku-desc">Emergency spill response kit in UN-rated polyethylene salvage drum with absorbent socks, pads, and PPE.</p>
+            <div class="sku-specs-grid">
+              <div class="sku-spec-item"><strong>Capacity:</strong> <span>55 Gallon Spill</span></div>
+              <div class="sku-spec-item"><strong>Drum:</strong> <span>UN 1H2/X100/S</span></div>
+              <div class="sku-spec-item"><strong>Contents:</strong> <span>Pads, Socks, PPE</span></div>
+              <div class="sku-spec-item"><strong>Compliance:</strong> <span>OSHA 1910.120</span></div>
+            </div>
+            <div class="sku-cta-row">
+              <a href="doctors.html?sku=SK-55" class="btn btn-primary btn-sm"><i class="ph ph-receipt"></i> Request Quote</a>
+              <a href="blog.html" class="btn btn-outline btn-sm"><i class="ph ph-file-arrow-down"></i> Specs Sheet</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Custom Formulation & Bulk Help Banner -->
+        <div class="fleet-infra-banner" style="margin-top: var(--spacing-8);" data-reveal="scale">
+          <div>
+            <span class="eyebrow" style="margin-bottom: var(--spacing-2);"><i class="ph ph-flask"></i> Technical Formulation Desk</span>
+            <h3 style="margin-bottom: var(--spacing-3);">Need a custom blend, private labeling, or rail-to-tanker volume?</h3>
+            <p style="color: var(--color-text-muted); margin-bottom: var(--spacing-4);">
+              Our staff of formulation chemists and HazMat transport coordinators engineer custom surfactant packages, specialized pH buffers, and dedicated packaging runs for multi-site operations.
+            </p>
+            <div class="cta-actions" style="justify-content: flex-start;">
+              <a href="doctors.html" class="btn btn-primary"><i class="ph ph-chats-circle"></i> Speak with a Chemical Specialist</a>
+              <a href="tel:8005550199" class="btn btn-outline"><i class="ph ph-phone"></i> (800) 555-0199</a>
+            </div>
+          </div>
+          <div style="background: var(--color-bg-alt); padding: var(--spacing-5); border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
+            <h4 style="margin-bottom: var(--spacing-3); font-size: 1.125rem;">Enterprise Account Benefits:</h4>
+            <ul class="checklist" style="text-align: left; margin-bottom: 0;">
+              <li style="margin-bottom: 10px;"><span class="tick"><i class="ph-bold ph-check"></i></span> <strong>Net-30 / Net-60 terms</strong> with consolidated billing</li>
+              <li style="margin-bottom: 10px;"><span class="tick"><i class="ph-bold ph-check"></i></span> <strong>Volume tiered discounts</strong> on drum &amp; tote pallet orders</li>
+              <li style="margin-bottom: 10px;"><span class="tick"><i class="ph-bold ph-check"></i></span> <strong>Free emergency spill containment audits</strong> for qualified plants</li>
+              <li><span class="tick"><i class="ph-bold ph-check"></i></span> <strong>Dedicated account logistics rep</strong> assigned to your facility</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -275,13 +480,14 @@
             <a href="services.html#degreasers">Solvents &amp; Degreasers</a>
             <a href="services.html#sanitizers">EPA Disinfectants</a>
             <a href="services.html#floorcare">Floor Care &amp; Coatings</a>
-            <a href="doctors.html">Bulk Ordering</a>
+            <a href="services.html#safety-gear">OSHA PPE &amp; Dosing</a>
           </div>
         </div>
 
         <div class="footer-col">
           <h4>Company</h4>
           <div class="footer-links">
+            <a href="about.html">About ChemDist Pro</a>
             <a href="doctors.html">Ordering &amp; Logistics</a>
             <a href="blog.html">SDS Library</a>
             <a href="contact.html">Contact Sales</a>

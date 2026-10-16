@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAllergyExplorer();
   initForms();
   initPasswordToggle();
+  initCatalogFilters();
 });
 
 const prefersReducedMotion = () =>
@@ -614,3 +615,31 @@ function initBackToTop() {
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 }
+
+/* ==========================================================================
+   Catalog Product Category Filters
+   ========================================================================== */
+function initCatalogFilters() {
+  const filterBtns = document.querySelectorAll('.catalog-filter-btn');
+  const cards = document.querySelectorAll('.product-sku-card');
+  if (!filterBtns.length || !cards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filterValue === 'all' || cat === filterValue) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+}
+
